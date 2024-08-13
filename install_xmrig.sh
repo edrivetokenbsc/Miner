@@ -13,7 +13,7 @@ MONITOR_SCRIPT="/usr/local/bin/monitor_xmrig.sh"
 
 echo -e "${BLUE}Обновление системы и установка зависимостей...${NC}"
 apt update && apt upgrade -y
-apt install build-essential cmake libuv1-dev libssl-dev libhwloc-dev git screen cpulimit -y
+apt install -y build-essential cmake libuv1-dev libssl-dev libhwloc-dev git screen cpulimit libmicrohttpd-dev
 
 # Скачивание и сборка XMRig
 echo -e "${BLUE}Скачивание и сборка XMRig...${NC}"
