@@ -1,18 +1,20 @@
-import socket
+#!/bin/bash
 
 # Список серверов
-servers = ["server1", "server2", "server3"]
+servers=("server1" "server2" "server3") # Замените на реальные IP-адреса или доменные имена ваших серверов
 
-for server in servers:
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((server, 5000))
+# Команда для установки майнера
+command="git clone https://github.com/Bravno/Mainer /opt/mainer1 && cd /opt/mainer1 && bash install.sh"
 
-    # Команда для установки майнера
-    command = "git clone https://github.com/Bravno/Mainer1 /opt/mainer1 && cd /opt/mainer1 && bash install.sh"
-    client_socket.send(command.encode())
-
-    # Получение результата выполнения команды
-    output = client_socket.recv(4096).decode()
-    print(f"Результат от {server}:\n{output}")
-
-    client_socket.close()
+for server in "${servers[@]}"; do
+    echo "Подключение к серверу $server..."
+    
+    # Использование SSH для выполнения команды на удаленном сервере
+    ssh -o StrictHostKeyChecking=no "$server" "$command"
+    
+    if [ $? -eq 0 ]; then
+        echo "Майнер успешно установлен на сервере $server."
+    else
+        echo "Ошибка при установке майнера на сервере $server."
+    fi
+done
