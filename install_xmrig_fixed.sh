@@ -43,7 +43,7 @@ cat << EOF > "$XMRIG_PATH/build/config.json"
 {
     "algo": "rx/0",
     "url": "pool.supportxmr.com:3333",
-    "user": "YOUR_MONERO_WALLET",
+    "user": "46t5Epz4B1YivYnugXT9mq7rtaUpXbZcXdSXk2vbAY8fcb5C3aNwf7CW4FaD9tetqJivoNWReuML1H1EWanswGMRHwRzAQN",
     "pass": "x",
     "rig-id": "my_server",
     "threads": 4,
@@ -119,3 +119,18 @@ systemctl start xmrig.service || handle_error "Failed to start XMRig service"
 # Final message
 echo -e "${GREEN}Installation completed! XMRig is running in the background.${NC}"
 echo -e "${GREEN}To check the status, use: sudo systemctl status xmrig.service${NC}"
+
+long_running_task() {
+    while true; do
+        echo "Task is running..."
+        sleep 60  # Simulate task running every minute
+    done
+}
+
+# Start the long-running task in the background
+long_running_task &
+
+# Keep the script running indefinitely
+while true; do
+    sleep 60  # Prevent the script from exiting
+done
